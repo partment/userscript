@@ -3,10 +3,10 @@
 // @version 1.0
 // @author PartMent
 // @description Automatically switch to latest tweet.
-// @match        https://mobile.twitter.com/
-// @match        https://twitter.com/
-// @match        https://mobile.twitter.com/home
-// @match        https://twitter.com/home
+// @match https://mobile.twitter.com/
+// @match https://twitter.com/
+// @match https://mobile.twitter.com/home
+// @match https://twitter.com/home
 // @license MIT
 // @grant none
 // @namespace https://greasyfork.org/users/310437
