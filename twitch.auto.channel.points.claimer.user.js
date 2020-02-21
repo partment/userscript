@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name Twitch Auto Channel Points Claimer
-// @version 1.3
+// @version 1.4
 // @author PartMent
 // @description Automatically claim channel points.
-// @author PartMent
 // @match https://www.twitch.tv/*
 // @license MIT
 // @grant none
@@ -12,7 +11,7 @@
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 if (MutationObserver) console.log('Auto claimer is enabled.');
-var observer = new MutationObserver(function(mutations) {
+var observer = new MutationObserver(e => {
     setTimeout(function () {
         var bonus = document.getElementsByClassName('claimable-bonus__icon');
         for (var i = 0;i<bonus.length;i++) {
