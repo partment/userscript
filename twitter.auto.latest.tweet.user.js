@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-if (MutationObserver) console.log('Auto claimer is enabled.');
+if (MutationObserver) console.log('Auto Latest is enabled.');
 let observer = new MutationObserver(e => {
     let latest = false;
     if(document.querySelector('main div[data-testid="primaryColumn"] div[aria-expanded="false"]:not([data-testid="userActions"])') && !latest) {
