@@ -2,7 +2,7 @@
 // @name Twitter Auto Latest Tweet
 // @version 1.0
 // @author PartMent
-// @description Automatically claim channel points.
+// @description Automatically switch to latest tweet.
 // @match        https://mobile.twitter.com/
 // @match        https://twitter.com/
 // @match        https://mobile.twitter.com/home
