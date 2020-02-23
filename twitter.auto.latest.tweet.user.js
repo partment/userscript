@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Twitter Auto Latest Tweet
-// @version 1.0
+// @version 1.1
 // @author PartMent
 // @description Automatically switch to latest tweet.
 // @match https://mobile.twitter.com/
@@ -16,20 +16,25 @@ let MutationObserver = window.MutationObserver || window.WebKitMutationObserver 
 if (MutationObserver) console.log('Auto Latest is enabled.');
 let observer = new MutationObserver(e => {
     let latest = false;
-    if(document.querySelector('main div[data-testid="primaryColumn"] div[aria-expanded="false"]:not([data-testid="userActions"])') && !latest) {
-        document.querySelector('main div[data-testid="primaryColumn"] div[aria-expanded="false"]:not([data-testid="userActions"])').click();
+    let menu = document.querySelector('main div[data-testid="primaryColumn"] div[aria-expanded="false"]:not([data-testid="userActions"])');
+    if (menu && !latest) {
+        menu.click();
     }
-    e.forEach(l => {
+    e.every(l => {
         let menusvg = document.evaluate('./div/div/div/div/*[local-name() = "svg"]/*[local-name() = "g"]', l.target, null, XPathResult.ANY_TYPE, null).iterateNext();
         if (menusvg && menusvg.childElementCount == 3) {
             let menubutton = document.evaluate('./div/div/div/div[2]', l.target, null, XPathResult.ANY_TYPE, null).iterateNext();
             menubutton.click();
             latest = true;
+            console.log('Switched to Latest.');
             observer.disconnect();
-        }else if(menusvg && menusvg.childElementCount == 6) {
+            return;
+        }else if (menusvg && menusvg.childElementCount == 6) {
             if (!latest) document.querySelector('div[data-focusable="true"] div').click();
             latest = true;
+            console.log('Already in Latest.');
             observer.disconnect();
+            return;
         }
     });
 });
