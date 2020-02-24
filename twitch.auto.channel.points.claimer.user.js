@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Twitch Auto Channel Points Claimer
-// @version 1.4
+// @version 1.5
 // @author PartMent
 // @description Automatically claim channel points.
 // @match https://www.twitch.tv/*
@@ -9,15 +9,15 @@
 // @namespace https://greasyfork.org/users/310437
 // ==/UserScript==
 
-var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 if (MutationObserver) console.log('Auto claimer is enabled.');
-var observer = new MutationObserver(e => {
-    setTimeout(function () {
-        var bonus = document.getElementsByClassName('claimable-bonus__icon');
-        for (var i = 0;i<bonus.length;i++) {
-            if (i == 0) console.log('Claimed!');
-            bonus[i].click();
-        }
-    }, Math.random() * 1000 + 2500);
+let observer = new MutationObserver(e => {
+    let bonus = document.querySelector('.claimable-bonus__icon');
+    if (bonus) {
+        bonus.click();
+        setTimeout(() => {
+            console.log('Claimed!');
+        }, Math.random() * 1000 + 5000);
+    }
 });
 observer.observe(document.body, {childList: true, subtree: true});
