@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Twitter No Ads
-// @version 1.4
+// @version 1.4.1
 // @author PartMent
 // @description Automatically remove Twitter Ads.
 // @match https://mobile.twitter.com/*
@@ -15,6 +15,8 @@ if (MutationObserver) console.log('No Ads is enabled.');
 let observer = new MutationObserver(e => {
     let ads = document.querySelector('div div div article div div div[data-testid="tweet"] > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4):not([role="group"]) > div > span');
     if (ads) {
+        let line = ads.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+        line.setAttribute("style", "display: none;");
         ads = ads.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
         ads.remove();
         console.log('Ads have been removed.');
