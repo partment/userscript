@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name Twitch Auto Channel Points Claimer
-// @version 1.5
+// @version 1.5.1
 // @author PartMent
 // @description Automatically claim channel points.
 // @match https://www.twitch.tv/*
+// @match https://dashboard.twitch.tv/*
 // @license MIT
 // @grant none
 // @namespace https://greasyfork.org/users/310437
